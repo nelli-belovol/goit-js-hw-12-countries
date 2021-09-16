@@ -7,3 +7,15 @@ body {
   max-width: 960px;
   padding: 16px;
 }
+
+.country__language-list {
+  list-style-type: none;
+  padding: 0;
+}
+.country__card {
+  display: flex;
+}
+
+.country__img {
+  margin-left: 100px;
+}
