@@ -10,18 +10,17 @@ const refs = {
   list: document.querySelector('.list__country'),
 };
 
-refs.input.addEventListener(
-  'input',
-  _.debounce(e => {
-    const searchQuery = e.target.value;
-    refs.list.innerHTML = '';
-    refs.div.innerHTML = '';
-    fetchCountries(searchQuery)
-      .then(createMarkUp)
-      .catch(() => error({ text: `The request failed`, delay: 2000 }))
-      .finally((e.target.value = ''));
-  }, 1000),
-);
+refs.input.addEventListener('input', _.debounce(onSearch, 1000));
+
+function onSearch(e) {
+  const searchQuery = e.target.value;
+  refs.list.innerHTML = '';
+  refs.div.innerHTML = '';
+  fetchCountries(searchQuery)
+    .then(createMarkUp)
+    .catch(() => error({ text: `The request failed`, delay: 2000 }))
+    .finally((e.target.value = ''));
+}
 
 function createMarkUp(array) {
   if (array.length >= 2 && array.length < 10) {
