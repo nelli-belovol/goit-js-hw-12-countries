@@ -10,6 +10,7 @@ export default function fetchCountries(country) {
     } else {
       return alert({
         text: 'Not found',
+        delay: 2000,
       });
     }
   });
